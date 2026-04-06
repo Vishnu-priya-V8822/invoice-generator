@@ -87,13 +87,15 @@ function generateInvoice() {
 ${paymentStarted ? `
 <div style="text-align:center; margin-top:10px;">
     <button onclick="activatePro()" style="
-        padding:6px 12px;
-        font-size:12px;
-        background:#007bff;
-        color:white;
-        border:none;
-        border-radius:6px;
-        cursor:pointer;
+        padding:5px 10px;
+    font-size:11px;
+    border-radius:5px;
+    background:#007bff;
+    color:white;
+    border:none;
+    cursor:pointer;
+    display:inline-block;
+    width:auto;
     ">
         I have Paid – Enter Code
     </button>
