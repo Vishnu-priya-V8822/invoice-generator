@@ -27,6 +27,15 @@ function generateInvoice() {
 
     // ✅ SAVE CLIENT
     saveClient(from, to);
+    // ✅ SAVE FORM DATA (NEW)
+    localStorage.setItem("invoiceData", JSON.stringify({
+        from,
+        to,
+        service,
+        amount,
+        invoiceNo,
+        date
+    }));
 
     const invoiceHTML = `
     <div style="text-align:left;">
@@ -234,20 +243,26 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("to").value = data.to;
         });
     }
+    // ✅ LOAD SAVED FORM DATA
+    const savedData = JSON.parse(localStorage.getItem("invoiceData"));
+
+    if (savedData) {
+        document.getElementById("from").value = savedData.from || "";
+        document.getElementById("to").value = savedData.to || "";
+        document.getElementById("service").value = savedData.service || "";
+        document.getElementById("amount").value = savedData.amount || "";
+        document.getElementById("invoiceNo").value = savedData.invoiceNo || "";
+        document.getElementById("date").value = savedData.date || "";
+    }
 });
 function upgrade() {
-    const confirmPay = confirm("Pay ₹99 to unlock Pro version?");
+    // ✅ mark payment started
+    localStorage.setItem("paymentStarted", "true");
 
-    if (confirmPay) {
-        localStorage.setItem("paymentStarted", "true");
-
-        // 👉 Reload page so paymentStarted updates
-        location.reload();
-
-        // 👉 Open WhatsApp
-        window.open("https://wa.me/919188229025?text=Hi, I want to upgrade to Pro ₹99");
-    }
+    // ✅ open WhatsApp directly (no popup block)
+    window.location.href = "https://wa.me/919188229025?text=Hi, I want to upgrade to Pro ₹99";
 }
+
 function activatePro() {
     let code = prompt("Enter your Pro activation code:");
 
