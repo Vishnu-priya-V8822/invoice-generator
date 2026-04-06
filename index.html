@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Invoice Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Create Invoice</h2>
+        <p id="clientLabel" style="font-size:13px; text-align:left; margin-top:10px; display:none;">
+            Select Saved Client
+        </p>
+
+        <select id="savedClients" style="display:none;"></select>
+
+        <input type="text" id="from" placeholder="Your Name">
+        <input type="text" id="to" placeholder="Client Name">
+        <input type="text" id="service" placeholder="Service (e.g. Web Design)">
+        <input type="number" id="amount" placeholder="Amount (₹)">
+        <label id="logoLabel" style="font-size:13px; text-align:left; display:block; margin-top:10px;">
+        </label>
+        <input type="file" id="logo" accept="image/*">
+        <p id="logoNote" style="font-size:11px; color:gray;"></p>
+
+
+        <input type="text" id="invoiceNo" placeholder="Invoice Number">
+        <input type="date" id="date">
+        <p>Create invoice in 30 seconds ⚡</p>
+        <button onclick="generateInvoice()">Generate Invoice</button>
+        <p id="errorMsg" style="color:red; display:none; font-size:14px;">
+            Please fill all fields
+        </p>
+    </div>
+
+    <div id="invoice" class="invoice-box"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
