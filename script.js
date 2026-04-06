@@ -239,14 +239,26 @@ function upgrade() {
     const confirmPay = confirm("Pay ₹99 to unlock Pro version?");
 
     if (confirmPay) {
-        // mark that user started payment
         localStorage.setItem("paymentStarted", "true");
-        // 👉 Open WhatsApp with message
-        window.open("https://wa.me/918137979025?text=Hi, I want to upgrade to Pro ₹99");
+
+        // 👉 Reload page so paymentStarted updates
+        location.reload();
+
+        // 👉 Open WhatsApp
+        window.open("https://wa.me/919188229025?text=Hi, I want to upgrade to Pro ₹99");
     }
 }
 function activatePro() {
-    const code = prompt("Enter your Pro activation code:");
+    let code = prompt("Enter your Pro activation code:");
+
+    // ❌ If user cancels or enters nothing
+    if (!code) {
+        alert("Please enter a valid code");
+        return;
+    }
+
+    // ✅ Clean input (VERY IMPORTANT)
+    code = code.trim().toUpperCase();
 
     const validCodes = [
         "INV-PR0-7821",
