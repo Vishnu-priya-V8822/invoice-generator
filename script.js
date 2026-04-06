@@ -95,7 +95,7 @@ ${paymentStarted ? `
         border-radius:6px;
         cursor:pointer;
     ">
-        I have Paid – Activate Pro
+        I have Paid – Enter Code
     </button>
 </div>
 ` : ""}
